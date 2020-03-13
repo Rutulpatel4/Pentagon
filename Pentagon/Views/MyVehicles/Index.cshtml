@@ -1,0 +1,23 @@
+﻿@model IEnumerable<Pentagon.Models.vehicle>
+
+@{
+    ViewBag.Title = "Store";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<hr />
+<hr />
+<h2>My Vehicles</h2>
+
+@{
+    foreach (var item in Model.Select(a => a.vehicleType).Distinct())
+    {
+        <section class="container">
+            <div class="col-md-4 text-center well">
+                <a href="/MyVehicles/VehicleType?vehicleType=@item">
+                    <button class="btn btn-primary"> @item Vehicles >> </button>
+                </a>
+            </div>
+        </section>
+    }
+}

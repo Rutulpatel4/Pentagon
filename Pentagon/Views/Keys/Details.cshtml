@@ -1,0 +1,35 @@
+﻿@model DETEXTION.Models.key
+
+@{
+    ViewBag.Title = "Details";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<h2>Details</h2>
+
+<div>
+    <h4>key</h4>
+    <hr />
+    <dl class="dl-horizontal">
+        <dt>
+            @Html.DisplayNameFor(model => model.vehicle.vehicleType)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.vehicle.vehicleType)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.keyTrackingNumber)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.keyTrackingNumber)
+        </dd>
+
+    </dl>
+</div>
+<p>
+    @Html.ActionLink("Edit", "Edit", new { id = Model.keyId }) |
+    @Html.ActionLink("Back to List", "Index")
+</p>

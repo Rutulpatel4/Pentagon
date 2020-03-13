@@ -1,0 +1,139 @@
+﻿@model IEnumerable<Pentagon.Models.vehicle>
+
+@{
+    ViewBag.Title = "Index";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<hr />
+<hr />
+    <center>
+        
+
+        @if (User.IsInRole("Manager"))
+        {
+            <p>
+                @Html.ActionLink("Create New", "Create")
+
+            </p>
+        }
+
+            @*<p>
+                @using (Html.BeginForm("Index", "Vehicles", FormMethod.Get))
+                {
+                    <b>Search By:</b>@Html.RadioButton("searchBy", "Make", true) <text> Make</text>
+                    @Html.RadioButton("searchBy", "VehicleType") <text> VehicleType </text> <br />
+                    @Html.TextBox("search") <input type="submit" value="Search" />
+                }
+            </p>*@
+            <hr />
+            @*<input type="search" id="txtsrc" placeholder="Enter value to search ......" />*@
+            <input type="search" id="txtsrc" class="search" placeholder="Enter value to search ......" />
+            <hr />
+        
+        <table class="table">
+            <tr>
+                <th>
+                    @Html.DisplayNameFor(model => model.vehicleType)
+                </th>
+                <th>
+                    @Html.DisplayNameFor(model => model.make)
+                </th>
+                <th>
+                    @Html.DisplayNameFor(model => model.model)
+                </th>
+                <th>
+                    @Html.DisplayNameFor(model => model.year)
+                </th>
+                <th>
+                    @Html.DisplayNameFor(model => model.vehicleIdentificationNumber)
+                </th>
+                <th>
+                    @Html.DisplayNameFor(model => model.vehiclesStockNumber)
+                </th>
+                <th>
+                    @Html.DisplayNameFor(model => model.trimLevel)
+                </th>
+                <th></th>
+            </tr>
+
+            @foreach (var item in ViewBag.result)
+            {
+                <tr>
+                    <td>@item.vehicleType</td>
+                    <td>@item.make</td>
+                    <td>@item.model</td>
+                    <td>@item.year</td>
+                    <td>@item.vehicleIdentificationNumber</td>
+                    <td>@item.vehiclesStockNumber</td>
+                    <td>@item.trimLevel</td>
+                    @*<td>
+                        @Html.DisplayFor(modelItem => item.vehicleType)
+                    </td>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.make)
+                    </td>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.model)
+                    </td>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.year)
+                    </td>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.vehicleIdentificationNumber)
+                    </td>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.vehiclesStockNumber)
+                    </td>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.trimLevel)
+                    </td>*@
+                    @if (User.IsInRole("Manager"))
+                    {
+                        <td>
+                            @Html.ActionLink("Edit", "Edit", new { id = item.vehicleId }) |
+                            @Html.ActionLink("Details", "Details", new { id = item.vehicleId }) |
+                            @Html.ActionLink("Delete", "Delete", new { id = item.vehicleId })
+                        </td>
+                    }
+
+                </tr>
+            }
+
+        </table>
+        <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
+        <script>
+            $("#txtsrc").on("keyup", function ()
+            {
+                var txtenter = $(this).val();
+                $("table tr").each(function (results)
+                {
+                    if (results !== 0)
+                    {
+                        var id = $(this).text();
+                        if (id.indexOf(txtenter) !== 0 && id.toLowerCase().indexOf(txtenter.toLowerCase()) < 0) {
+                             $(this).hide();
+                        }
+                        else {
+                            $(this).show();
+                        }
+                    }
+                });
+            });
+          
+        </script>
+        @*$("#txtsrc").on("keyup", function () {
+        var txtenter = $(this).val();
+        $("table tr").each(function (results) {
+        if (results !== 0) {
+        var id = $(this).find("td:nth-child(1)" && "td:nth-child(2)").text();
+        if (id.indexOf(txtenter) !== 0 && id.toLowerCase().indexOf(txtenter.toLowerCase()) < 0) {
+        $(this).hide();
+        }
+        else {
+        $(this).show();
+        }
+        }
+        });
+        });*@
+    </center>
