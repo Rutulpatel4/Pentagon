@@ -25,7 +25,17 @@
                 <ul class="nav navbar-nav">
                     @*<li>@Html.ActionLink("Home", "Index", "Home")</li>
         <li>@Html.ActionLink("About", "About", "Home")</li>*@
-                    <li>@Html.ActionLink("Home", "LiveStatus", "Home")</li>
+                    @if (User.Identity.IsAuthenticated)
+                    {
+                        <li>@Html.ActionLink("Home", "LiveStatus", "Home")</li>
+                    }
+                    else
+                    {
+
+
+                        <li>@Html.ActionLink("Home", "Index", "Home")</li>
+                    }
+
                     <li>@Html.ActionLink("Services", "Services", "Home")</li>
                     @if (User.Identity.IsAuthenticated)
                     {
@@ -37,21 +47,21 @@
                                 <li>@Html.ActionLink("Users", "Index", "UserInfoes")</li>
                             }
 
-                            @*<li>@Html.ActionLink("Key", "Index", "Keys")</li>*@
+                            <li>@Html.ActionLink("Key", "Index", "Keys")</li>
                             <li>@Html.ActionLink("My Vehicles", "Index", "Vehicles")</li>
+
 
                         }
 
 
                     }
-
                     <li>@Html.ActionLink("Contact", "Contact", "Home")</li>
                     <li>@Html.ActionLink("Our Location", "About", "Home")</li>
                     <li>@Html.ActionLink("Settings", "Settings", "Home")</li>
 
                 </ul>
-                @Html.Partial("_LoginPartial")
-            </div>
+                    @Html.Partial("_LoginPartial")
+                </div>
         </div>
     </div>
     <div class="container body-content">
@@ -67,3 +77,4 @@
     @RenderSection("scripts", required: false)
 </body>
 </html>
+
