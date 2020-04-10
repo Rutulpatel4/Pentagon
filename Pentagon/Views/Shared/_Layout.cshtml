@@ -21,13 +21,13 @@
 
                 @Html.Raw(@Html.ActionLink("[replacetext]", "Index", "Home").ToHtmlString().Replace("[replacetext]", "<img src=\"/Images/Detextion-Logo-03.png\" height=\"100\"  width=\"180\" />"))
             </div>
-            <div class="navbar-collapse collapse">
+            <div class="navbar-collapse collapse" style="font-family:'Copperplate Gothic'">
                 <ul class="nav navbar-nav">
                     @*<li>@Html.ActionLink("Home", "Index", "Home")</li>
         <li>@Html.ActionLink("About", "About", "Home")</li>*@
                     @if (User.Identity.IsAuthenticated)
                     {
-                        <li>@Html.ActionLink("Home", "LiveStatus", "Home")</li>
+                        <li>@Html.ActionLink("Live Status", "LiveStatus", "Home")</li>
                     }
                     else
                     {

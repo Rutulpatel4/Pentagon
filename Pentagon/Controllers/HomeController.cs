@@ -15,35 +15,35 @@ namespace Pentagon.Controllers
 
         public ActionResult About()
         {
-            ViewBag.Message = "Our Location Page.";
+            ViewBag.Message = "Our Location";
 
             return View();
         }
 
         public ActionResult Services()
         {
-            ViewBag.Message = "Services Page";
+            ViewBag.Message = "Services";
 
             return View();
         }
 
         public ActionResult LiveStatus()
         {
-            ViewBag.Message = "Live Status Page";
+            ViewBag.Message = "Live Status";
 
             return View();
         }
 
         public ActionResult Contact()
         {
-            ViewBag.Message = "Your contact page.";
+            ViewBag.Message = "Contact Information";
 
             return View();
         }
 
         public ActionResult Settings()
         {
-            ViewBag.Message = "Your Settings page.";
+            ViewBag.Message = "Settings";
 
             return View();
         }
