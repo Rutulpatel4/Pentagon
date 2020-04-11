@@ -8,73 +8,74 @@
     @Scripts.Render("~/bundles/modernizr")
 
 </head>
-<body background="blue">
-    <div class="navbar navbar-inverse navbar-fixed-top">
-        <div class="container">
-            <div class="navbar-header">
-                <button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".navbar-collapse">
-                    <span class="icon-bar"></span>
-                    <span class="icon-bar"></span>
-                    <span class="icon-bar"></span>
-                </button>
+<body style="background-image: url('../../Images/background.jpg'); background-repeat: no-repeat; background-size: cover; background-attachment:fixed">
+       <div class="navbar navbar-inverse navbar-fixed-top" style="background-color:#282929">
+            <div class="container">
+                <div class="navbar-header">
+                    <button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".navbar-collapse">
+                        <span class="icon-bar"></span>
+                        <span class="icon-bar"></span>
+                        <span class="icon-bar"></span>
+                    </button>
 
 
-                @Html.Raw(@Html.ActionLink("[replacetext]", "Index", "Home").ToHtmlString().Replace("[replacetext]", "<img src=\"/Images/Detextion-Logo-03.png\" height=\"100\"  width=\"180\" />"))
-            </div>
-            <div class="navbar-collapse collapse" style="font-family:'Copperplate Gothic'">
-                <ul class="nav navbar-nav">
-                    @*<li>@Html.ActionLink("Home", "Index", "Home")</li>
-        <li>@Html.ActionLink("About", "About", "Home")</li>*@
-                    @if (User.Identity.IsAuthenticated)
-                    {
-                        <li>@Html.ActionLink("Live Status", "LiveStatus", "Home")</li>
-                    }
-                    else
-                    {
-
-
-                        <li>@Html.ActionLink("Home", "Index", "Home")</li>
-                    }
-
-                    <li>@Html.ActionLink("Services", "Services", "Home")</li>
-                    @if (User.Identity.IsAuthenticated)
-                    {
-
-                        if (User.IsInRole("Manager") || User.IsInRole("Dealer"))
+                    @Html.Raw(@Html.ActionLink("[replacetext]", "Index", "Home").ToHtmlString().Replace("[replacetext]", "<img src=\"/Images/Detextion-Logo-03.png\" height=\"100\"  width=\"180\" />"))
+                </div>
+                <div class="navbar-collapse collapse" style="font-family:'Copperplate Gothic'">
+                    @Html.Partial("_LoginPartial")
+                    <ul class="nav navbar-nav">
+                        @*<li>@Html.ActionLink("Home", "Index", "Home")</li>
+            <li>@Html.ActionLink("About", "About", "Home")</li>*@
+                        @if (User.Identity.IsAuthenticated)
                         {
-                            if (User.IsInRole("Manager"))
-                            {
-                                <li>@Html.ActionLink("Users", "Index", "UserInfoes")</li>
-                            }
+                            <li>@Html.ActionLink("Live Status", "LiveStatus", "Home")</li>
+                        }
+                        else
+                        {
 
-                            <li>@Html.ActionLink("Key", "Index", "Keys")</li>
-                            <li>@Html.ActionLink("My Vehicles", "Index", "Vehicles")</li>
+
+                            <li>@Html.ActionLink("Home", "Index", "Home")</li>
+                        }
+
+                        <li>@Html.ActionLink("Services", "Services", "Home")</li>
+                        @if (User.Identity.IsAuthenticated)
+                        {
+
+                            if (User.IsInRole("Manager") || User.IsInRole("Dealer"))
+                            {
+                                if (User.IsInRole("Manager"))
+                                {
+                                    <li>@Html.ActionLink("Users", "Index", "UserInfoes")</li>
+                                }
+
+                                <li>@Html.ActionLink("Key", "Index", "Keys")</li>
+                                <li>@Html.ActionLink("My Vehicles", "Index", "Vehicles")</li>
+
+
+                            }
 
 
                         }
+                        <li>@Html.ActionLink("Contact", "Contact", "Home")</li>
+                        <li>@Html.ActionLink("Our Location", "About", "Home")</li>
+                        <li>@Html.ActionLink("Settings", "Settings", "Home")</li>
 
-
-                    }
-                    <li>@Html.ActionLink("Contact", "Contact", "Home")</li>
-                    <li>@Html.ActionLink("Our Location", "About", "Home")</li>
-                    <li>@Html.ActionLink("Settings", "Settings", "Home")</li>
-
-                </ul>
-                    @Html.Partial("_LoginPartial")
+                    </ul>
+                    @*@Html.Partial("_LoginPartial")*@
                 </div>
+            </div>
         </div>
-    </div>
-    <div class="container body-content">
-        @RenderBody()
-        <hr />
-        <footer>
-            <p>&copy; @DateTime.Now.Year - Detextion- Driving our world further</p>
-        </footer>
-    </div>
+        <div class="container body-content">
+            @RenderBody()
+            <hr />
+            <footer style="color:black">
+                <p>&copy; @DateTime.Now.Year - Detextion- Driving our world further</p>
+            </footer>
+        </div>
 
-    @Scripts.Render("~/bundles/jquery")
-    @Scripts.Render("~/bundles/bootstrap")
-    @RenderSection("scripts", required: false)
+        @Scripts.Render("~/bundles/jquery")
+        @Scripts.Render("~/bundles/bootstrap")
+        @RenderSection("scripts", required: false)
 </body>
 </html>
 
