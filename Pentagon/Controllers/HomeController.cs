@@ -47,5 +47,12 @@ namespace Pentagon.Controllers
 
             return View();
         }
+
+        public ActionResult EmpLive()
+        {
+            ViewBag.Message = "Employee Live Location";
+
+            return View();
+        }
     }
 }

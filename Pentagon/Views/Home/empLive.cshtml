@@ -1,0 +1,60 @@
+﻿@{
+    ViewBag.Title = "Employee Live Location";
+}
+
+<br />
+<br />
+<h2 align="center" style="font-family:'Century'; font-weight:bold; color:white; background-color:#282929">@ViewBag.Message</h2>
+<hr />
+
+<p id="status" style="font-family:'Copperplate Gothic'"></p>
+<a id="map-link" target="_blank"></a>
+
+<script src="~/Content/js/JavaScript.js"></script>
+<iframe id="liveLocation" src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d2850.3139067290244!2d-79.70589678496682!3d44.40620391143057!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x882aa2e7a3470ad5%3A0x462551ac551bae34!2sBayfield%20Ford%20Lincoln!5e0!3m2!1sen!2sca!4v1581688193479!5m2!1sen!2sca"
+        width="600" height="450" frameborder="0" style="border:0;width:100%;height:400px;" allowfullscreen=""></iframe>
+
+
+<div id="googleMap" style="width:100%;height:400px;"></div>
+
+<script>
+    function geoFindMe() {
+    const status = document.querySelector("#status");
+    const mapLink = document.querySelector("#map-link");
+
+    mapLink.href = "";
+    mapLink.textContent = "";
+
+    function success(position) {
+        const latitude = position.coords.latitude;
+        const longitude = position.coords.longitude;
+        const mapLink =
+            "https://maps.google.com/maps?q=" +
+            latitude +
+            ", " +
+            longitude +
+            "&z=15&output=embed&z=19";
+       // status.textContent =
+           // "latitude = " + latitude + ",  longitude = " + longitude;
+        document
+            .querySelector("#liveLocation")
+            .setAttribute("src", mapLink.toString());
+    }
+
+    function error() {
+        status.textContent = "Unable to retrieve your location";
+    }
+
+    if (!navigator.geolocation) {
+        status.textContent = "Geolocation is not supported by your browser";
+    } else {
+        status.textContent = "Locating…";
+        navigator.geolocation.watchPosition(success, error);
+    }
+}
+
+window.onload = geoFindMe();
+
+</script>
+
+
